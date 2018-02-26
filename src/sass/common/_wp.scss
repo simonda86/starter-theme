@@ -1,0 +1,9 @@
+body {
+	padding-top: 50px;
+}
+
+body.logged-in {
+	nav.navbar-fixed-top {
+		top: 32px;
+	}
+}
