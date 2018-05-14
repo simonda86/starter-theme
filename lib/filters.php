@@ -4,13 +4,14 @@ namespace Strapress\Filters;
 
 
 /**
- * WP Title
- *
- * Show the site title on the home page
+ * -----------------------------------------------
+ * WordPress Title
+ * ----------------------------------------------
  *
  * @param string $title The original title.
  * @return string The title to use.
  */
+
 function wp_title( $title )
 {
 	if ( empty( $title ) && ( is_home() || is_front_page() ) )
@@ -24,13 +25,16 @@ add_filter( 'wp_title', __NAMESPACE__ . '\\wp_title' );
 
 
 /**
+ * -----------------------------------------------
  * Bootstrap responsive image
+ * -----------------------------------------------
  *
  * Add the bootstrap helper class to all WordPress images
  *
- * @param string $title The original title.
- * @return string The title to use.
+ * @param string $class list of css classes
+ * @return string list of css classes
  */
+
 function add_bootstrap_img_responsive_class($class)
 {
 	$class .= ' img-responsive ';
@@ -38,7 +42,18 @@ function add_bootstrap_img_responsive_class($class)
 }
 add_filter('get_image_tag_class',  __NAMESPACE__ . '\\add_bootstrap_img_responsive_class' );
 
-/* Filter images loaded via the wp_get_attachment_image function */
+
+/**
+ * -----------------------------------------------
+ * Filter image attributes
+ * -----------------------------------------------
+ *
+ * Filter images loaded via the wp_get_attachment_image function
+ *
+ * @param array $attr Image attributes
+ * @return array Image attributes
+ */
+
 function filter_wp_attributes($attr)
 {
 	if(!isset($attr['class'])) $attr['class'] = '';

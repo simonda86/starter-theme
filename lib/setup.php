@@ -2,7 +2,8 @@
 
 namespace Strapress\Setup;
 
-/* ----------------------------------------------
+/**
+ * ----------------------------------------------
  * Add Theme Support
  * ----------------------------------------------
  * 
@@ -16,7 +17,8 @@ function theme_support()
 add_action( 'after_setup_theme', __NAMESPACE__ . '\\theme_support');
 
 
-/* ----------------------------------------------
+/**
+ * ----------------------------------------------
  * Clean up wp_head
  * ----------------------------------------------
  * 
@@ -40,7 +42,8 @@ function clean_up_wp_head()
 add_action('after_setup_theme', __NAMESPACE__ . '\\clean_up_wp_head');
 
 
-/* ----------------------------------------------
+/**
+ * ----------------------------------------------
  * Theme Assets
  * ----------------------------------------------
  * 
@@ -63,24 +66,30 @@ function load_assets()
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\load_assets');
 
 
-/* ----------------------------------------------
+/**
+ * ----------------------------------------------
  * Get Asset URL
  * ----------------------------------------------
  *
- * Return the URL to the Asset including the Laravel Mix version number
+ * Find the URL to the Asset including the Laravel Mix version number
+ *
+ * @param string $asset_path
+ * @param boolean $enable_version_ids
+ * @return string Asset URL
  */
 
-function get_asset_url($path, $enable_version_ids = true)
+function get_asset_url($asset_path, $enable_version_ids = true)
 {
 	if($enable_version_ids && get_template_directory() . '/dist/mix-manifest.json') {
 		$json = json_decode(file_get_contents(get_template_directory() . '/dist/mix-manifest.json'));
-		$path = (property_exists($json, $path)) ? $json->$path : $path;
+		$asset_path = (property_exists($json, $asset_path)) ? $json->$path : $asset_path;
 	}
 
-	return get_template_directory_uri() . '/dist/' . $path;
+	return get_template_directory_uri() . '/dist/' . $asset_path;
 }
 
-/* ----------------------------------------------
+/**
+ * ----------------------------------------------
  * Menus
  * ----------------------------------------------
  * 
