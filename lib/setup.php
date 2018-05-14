@@ -82,7 +82,7 @@ function get_asset_url($asset_path, $enable_version_ids = true)
 {
 	if($enable_version_ids && get_template_directory() . '/dist/mix-manifest.json') {
 		$json = json_decode(file_get_contents(get_template_directory() . '/dist/mix-manifest.json'));
-		$asset_path = (property_exists($json, $asset_path)) ? $json->$path : $asset_path;
+		$asset_path = (property_exists($json, $asset_path)) ? $json->$asset_path : $asset_path;
 	}
 
 	return get_template_directory_uri() . '/dist/' . $asset_path;
