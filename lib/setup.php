@@ -8,6 +8,7 @@ namespace Strapress\Setup;
  * 
  * Add theme feature support
  */
+
 function theme_support()
 {
 	add_theme_support( 'post-thumbnails' );
@@ -50,17 +51,34 @@ function load_assets()
 {
 	// Get theme information
 	$theme = wp_get_theme();
-	
+
 	// CSS
-	wp_register_style( $theme->get_template(), get_template_directory_uri() . '/dist/css/style.css', null, $theme->version );
+	wp_register_style( $theme->get_template(), get_asset_url('/css/style.css'), null, $theme->version );
 	wp_enqueue_style( $theme->get_template() );
 
 	// JS
-	wp_register_script( $theme->get_template(), get_template_directory_uri() . '/dist/js/all.js', ['jquery'], $theme->version);
+	wp_register_script( $theme->get_template(), get_asset_url('/js/all.js'), ['jquery'], $theme->version);
 	wp_enqueue_script( $theme->get_template() );
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\load_assets');
 
+
+/* ----------------------------------------------
+ * Get Asset URL
+ * ----------------------------------------------
+ *
+ * Return the URL to the Asset including the Laravel Mix version number
+ */
+
+function get_asset_url($path, $enable_version_ids = true)
+{
+	if($enable_version_ids && get_template_directory() . '/dist/mix-manifest.json') {
+		$json = json_decode(file_get_contents(get_template_directory() . '/dist/mix-manifest.json'));
+		$path = (property_exists($json, $path)) ? $json->$path : $path;
+	}
+
+	return get_template_directory_uri() . '/dist/' . $path;
+}
 
 /* ----------------------------------------------
  * Menus
@@ -68,6 +86,7 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\load_assets');
  * 
  * Register menus for the theme
  */
+
 function register_menus()
 {
 	register_nav_menus(array(

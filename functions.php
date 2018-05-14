@@ -1,5 +1,10 @@
 <?php
 
+require_once 'lib/setup.php';
+require_once 'lib/filters.php';
+require_once 'lib/custom_functions.php';
+require_once 'lib/classes/Bootstrapwp_Walker_Nav_Menu.php';
+
 if ( ! class_exists( 'Timber' ) ) {
 	add_action( 'admin_notices', function() {
 		echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php') ) . '</a></p></div>';
