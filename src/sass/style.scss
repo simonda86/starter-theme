@@ -1,6 +1,11 @@
 @import "common/bootstrap_variables";
-@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 // Common
 @import "common/images";
 @import "common/wp";
+
+// Components
+@import "components/header";
+@import "components/main";
+@import "components/footer";

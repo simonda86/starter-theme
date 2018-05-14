@@ -1,10 +1,17 @@
 {% if menu %}
-	<ul>
-	{% for item in menu %}
-		<li class="{{ item.classes | join(' ') }}">
-			<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-			{% include "menu.twig" with {'menu': item.get_children} %}
-		</li>
-	{% endfor %}
-	</ul>
+	<div class="container">
+		<a class="navbar-brand" href="{{ site.url }}">{{ site.name }}</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+                {% for item in menu %}
+					<li class="{{ item.classes | join(' ') }}">
+						<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+					</li>
+                {% endfor %}
+			</ul>
+		</div>
+	</div>
 {% endif %}
