@@ -2,6 +2,7 @@
 
 require_once 'lib/setup.php';
 require_once 'lib/filters.php';
+require_once 'lib/shortcodes.php';
 require_once 'lib/custom_functions.php';
 require_once 'lib/classes/Bootstrapwp_Walker_Nav_Menu.php';
 
@@ -42,10 +43,8 @@ class StarterSite extends TimberSite {
 	}
 
 	function add_to_context( $context ) {
-		$context['foo'] = 'bar';
-		$context['stuff'] = 'I am a value set in your functions.php file';
-		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
 		$context['menu'] = new TimberMenu();
+		$context['site_options'] = get_fields('option');
 		$context['site'] = $this;
 		return $context;
 	}
