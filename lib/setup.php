@@ -6,7 +6,7 @@ namespace Strapress\Setup;
  * ----------------------------------------------
  * Add Theme Support
  * ----------------------------------------------
- * 
+ *
  * Add theme feature support
  */
 
@@ -21,8 +21,8 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\\theme_support');
  * ----------------------------------------------
  * Clean up wp_head
  * ----------------------------------------------
- * 
- * This will remove some unnecessary markup added 
+ *
+ * This will remove some unnecessary markup added
  * to the wp_head by WordPress.
  */
 
@@ -46,7 +46,7 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\clean_up_wp_head');
  * ----------------------------------------------
  * Theme Assets
  * ----------------------------------------------
- * 
+ *
  * Load the default theme assets (CSS/JS)
  */
 
@@ -92,7 +92,7 @@ function get_asset_url($asset_path, $enable_version_ids = true)
  * ----------------------------------------------
  * Menus
  * ----------------------------------------------
- * 
+ *
  * Register menus for the theme
  */
 
@@ -103,3 +103,28 @@ function register_menus()
 	));
 }
 add_action('init', __NAMESPACE__.'\\register_menus');
+
+
+/**
+ * ----------------------------------------------
+ * Options Page
+ * ----------------------------------------------
+ *
+ * Register a theme options page using ACF
+ */
+
+function register_options_page()
+{
+	if(function_exists('acf_add_options_page')) {
+
+		acf_add_options_page(array(
+			'page_title' => 'Theme Settings',
+			'menu_title' => 'Theme Settings',
+			'menu_slug'  => 'theme-general-settings',
+			'capability' => 'edit_posts',
+			'redirect'   => false
+		));
+
+	}
+}
+add_action('init', __NAMESPACE__ . '\\register_options_page');
