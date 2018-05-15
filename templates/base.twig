@@ -15,6 +15,12 @@
 			{% endblock %}
 		</header>
 
+		{% if not fn('is_front_page') and post.thumbnail %}
+			<div class="post-thumbnail">
+				<img src="{{ post.thumbnail.src | resize(1280, 400) }}" alt="{{ post.title }}" class="img-fluid">
+			</div>
+		{% endif %}
+
 		<section id="content">
 			<main>
                 {% block content %}
