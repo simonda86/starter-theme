@@ -8,7 +8,7 @@
 			<ul class="navbar-nav mr-auto">
                 {% for item in menu %}
 					<li class="{{ item.classes | join(' ') }}">
-						<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+						<a target="{{ item.target }}" href="{{ item.link }}" class="nav-link">{{ item.title }}</a>
 					</li>
                 {% endfor %}
 			</ul>
