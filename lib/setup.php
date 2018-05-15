@@ -60,7 +60,7 @@ function load_assets()
 	wp_enqueue_style( $theme->get_template() );
 
 	// JS
-	wp_register_script( $theme->get_template(), get_asset_url('/js/all.js'), ['jquery'], $theme->version);
+	wp_register_script( $theme->get_template(), get_asset_url('/js/app.js'), ['jquery'], $theme->version);
 	wp_enqueue_script( $theme->get_template() );
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\load_assets');

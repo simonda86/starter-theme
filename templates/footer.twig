@@ -3,6 +3,38 @@
         <div class="col-sm-4">
             {{ site_options.copyright | shortcodes }}
         </div>
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-4">
+            <ul class="list-inline">
+                {% if site_options.twitter_url %}
+                <li class="list-inline-item">
+                    <a href="{{ site_options.twitter_url }}"><i class="fab fa-twitter"></i></a>
+                </li>
+                {% endif %}
+                {% if site_options.facebook_url %}
+                <li class="list-inline-item">
+                    <a href="{{ site_options.facebook_url }}"><i class="fab fa-facebook"></i></a>
+                </li>
+                {% endif %}
+                {% if site_options.instagram_url %}
+                <li class="list-inline-item">
+                    <a href="{{ site_options.instagram_url }}"><i class="fab fa-instagram"></i></a>
+                </li>
+                {% endif %}
+                {% if site_options.linkedin_url %}
+                <li class="list-inline-item">
+                    <a href="{{ site_options.linkedin_url }}"><i class="fab fa-linkedin"></i></a>
+                </li>
+                {% endif %}
+                {% if site_options.google_plus_url %}
+                <li class="list-inline-item">
+                    <a href="{{ site_options.google_plus_url }}"><i class="fab fa-google-plus"></i></a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </div>
 
