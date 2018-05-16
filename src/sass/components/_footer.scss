@@ -1,5 +1,36 @@
 footer {
     background-color: black;
-    color: #FFF;
+    color: $white;
     padding: rem(40) 0;
+
+    a {
+        color: $white;
+
+        &:hover, &:focus, &:active {
+            color: darken($white, 20%);
+        }
+    }
+
+    .legal_menu {
+        font-size: rem(12);
+
+        li {
+            margin-top: rem(10);
+
+            &:not(:last-child) {
+                margin-right: rem(2);
+            }
+
+            &:not(:first-child) {
+                &:before {
+                    content: "\007c";
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .social_menu {
+        font-size: rem(24);
+    }
 }

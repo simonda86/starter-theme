@@ -100,6 +100,8 @@ function register_menus()
 {
 	register_nav_menus(array(
 		'main_menu' => 'Main site menu',
+		'footer_menu' => 'Footer menu',
+		'legal_menu' => 'Legal menu',
 	));
 }
 add_action('init', __NAMESPACE__.'\\register_menus');

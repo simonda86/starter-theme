@@ -2,12 +2,29 @@
     <div class="row">
         <div class="col-sm-4">
             {{ site_options.copyright | shortcodes }}
+            {% if legal_menu %}
+                <ul class="list-inline legal_menu">
+                    {% for item in legal_menu.items %}
+                        <li class="list-inline-item">
+                            <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
         <div class="col-sm-4">
-
+            {% if footer_menu %}
+                <ul class="list-unstyled">
+                    {% for item in footer_menu.items %}
+                        <li class="{{ item.classes | join(' ') }}">
+                            <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
         <div class="col-sm-4">
-            <ul class="list-inline text-right">
+            <ul class="list-inline text-right social_menu">
                 {% if site_options.twitter_url %}
                 <li class="list-inline-item">
                     <a href="{{ site_options.twitter_url }}"><i class="fab fa-twitter"></i></a>
