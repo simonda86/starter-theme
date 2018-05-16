@@ -37,7 +37,7 @@ add_filter( 'wp_title', __NAMESPACE__ . '\\wp_title' );
 
 function add_bootstrap_img_responsive_class($class)
 {
-	$class .= ' img-responsive ';
+	$class .= ' img-fluid ';
 	return $class;
 }
 add_filter('get_image_tag_class',  __NAMESPACE__ . '\\add_bootstrap_img_responsive_class' );
