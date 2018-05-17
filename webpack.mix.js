@@ -13,6 +13,10 @@ let mix = require('laravel-mix');
 
 mix.setPublicPath('dist/');
 
+mix.options({
+	processCssUrls: false
+});
+
 if (!mix.inProduction()) {
 	mix.webpackConfig({
 		devtool: 'source-map'
@@ -22,4 +26,5 @@ if (!mix.inProduction()) {
 
 mix.js('src/js/app.js', 'dist/js/')
 	.sass('src/sass/style.scss', 'dist/css/')
-	.version();
+	.version()
+	.browserSync('angelman.local');
