@@ -1,11 +1,16 @@
 {
   "private": true,
   "devDependencies": {
-    "bootstrap": "^4.1.1",
-    "cross-env": "^5.1.5",
-    "laravel-mix": "^2.1.11",
     "@fortawesome/fontawesome": "^1.1.8",
-    "@fortawesome/fontawesome-free-brands": "^5.0.13"
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "bootstrap": "^4.1.1",
+    "browser-sync": "^2.24.4",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "copy-webpack-plugin": "^4.5.1",
+    "cross-env": "^5.1.5",
+    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-webpack-plugin": "^2.1.5",
+    "laravel-mix": "^2.1.11"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",

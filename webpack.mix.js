@@ -1,4 +1,7 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 
 /*
  |--------------------------------------------------------------------------
@@ -18,11 +21,26 @@ mix.options({
 });
 
 if (!mix.inProduction()) {
-	mix.webpackConfig({
-		devtool: 'source-map'
-	})
-	.sourceMaps()
+	mix.sourceMaps();
 }
+
+mix.webpackConfig({
+	devtool: 'source-map',
+	plugins: [
+		new CopyWebpackPlugin([{
+			from: 'src/images',
+			to: 'images',
+		}]),
+		new ImageminPlugin({
+			test: /\.(jpe?g|png|gif|svg)$/i,
+			plugins: [
+				imageminMozjpeg({
+					quality: 80,
+				})
+			]
+		})
+	]
+});
 
 mix.js('src/js/app.js', 'dist/js/')
 	.sass('src/sass/style.scss', 'dist/css/')
